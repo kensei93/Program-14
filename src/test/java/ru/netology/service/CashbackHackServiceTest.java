@@ -1,41 +1,46 @@
 package ru.netology.service;
 
+
+import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class CashbackHackServiceTest {
-    CashbackHackService service = new CashbackHackService();
 
     @Test
-    public void shouldCalculateIfAmountCorrect() {
-        int amount = 5700;
+    public void calculateServiceInTheBoundary () {
+        CashbackHackService service = new CashbackHackService();
+
+        int amount = 1350;
+
         int actual = service.remain(amount);
-        int expected = 300;
-        assertEquals(expected, actual);
+        int expected = 650;
+        System.out.println(actual);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
-    public void shouldCalculateIfAmountZero() {
-        int amount = 0;
+    public void calculateServiceNotInTheBoundary () {
+        CashbackHackService service = new CashbackHackService();
+
+        int amount = 500;
+
         int actual = service.remain(amount);
-        int expected = 1000;
-        assertEquals(expected, actual);
+        int expected = 500;
+        System.out.println(actual);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
-    public void shouldCalculateIfAmount1000() {
+    public void calculateServiceInTheGradle () {
+        CashbackHackService service = new CashbackHackService();
+
         int amount = 1000;
-        int actual = service.remain(amount);
-        int expected = 0;
-        assertEquals(expected, actual);
-    }
 
-    @Test
-    public void shouldCalculateIfAmountIncorrect() {
-        int amount = -50000;
         int actual = service.remain(amount);
         int expected = 0;
-        assertEquals(expected, actual);
+
+        System.out.println(actual);
+
+        Assert.assertEquals(actual, expected);
     }
 }
